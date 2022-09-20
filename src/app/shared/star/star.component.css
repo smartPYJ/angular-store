@@ -1,0 +1,12 @@
+.crop {
+    overflow: hidden;
+}
+
+div{
+    cursor: pointer;
+}
+
+.fa {
+color: rgb(244, 24, 8);
+
+}

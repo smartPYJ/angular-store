@@ -1,19 +1,31 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ProductListComponent } from './product/product-list.component';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { MycurrencyPipe } from 'src/custom.currencypipe';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { WelcomeComponent } from './home/welcome.component';
+import { ProductModule } from './product/product.module';
 @NgModule({
-  declarations: [AppComponent ,
-    ProductListComponent,
-    MycurrencyPipe
+  declarations:
+  [
+    AppComponent,
+    WelcomeComponent
   ],
   imports: [BrowserModule,
-  FormsModule
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot( [
+    
+      {path: 'welcome', component: WelcomeComponent},
+      {path: '', redirectTo: 'welcome', pathMatch: 'full' },
+     {path: '**', redirectTo: 'welcome', pathMatch: 'full' },
+    ]),
+    ProductModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],
- 
+
 })
 export class AppModule { }
